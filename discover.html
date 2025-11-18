@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover - Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(55, 65, 81, 0.8)), url('../images/download (2).jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            image-rendering: auto;
+            image-rendering: high-quality;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            filter: contrast(1.1) saturate(1.1);
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .duluth-story-section {
+            padding: 80px 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95)), url('../images/download (2).jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            position: relative;
+            image-rendering: auto;
+            image-rendering: high-quality;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            filter: contrast(1.05) saturate(1.05);
+        }
+        
+        .duluth-story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+        }
+        
+        .duluth-story-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .story-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .story-text {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .story-paragraph {
+            color: #6b7280;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .story-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .highlight-item {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3a8a, #374151);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .highlight-item:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .highlight-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1e3a8a, #374151);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .highlight-item h3 {
+            color: #1f2937;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-item p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .video-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-video {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-play {
+            background: linear-gradient(135deg, #1e3a8a, #374151);
+            color: white;
+        }
+        
+        .btn-pause {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        
+        .btn-video:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-play:hover {
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+        
+        .btn-pause:hover {
+            background: #d1d5db;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .story-highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .story-text {
+                margin-bottom: 3rem;
+            }
+            
+            .story-paragraph {
+                font-size: 1rem;
+            }
+            
+            .page-header {
+                background-attachment: scroll;
+            }
+            
+            .duluth-story-section {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="hobbies.html" class="nav-link">Hobbies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="discover.html" class="nav-link active">Discover</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resume.html" class="nav-link">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a href="career.html" class="nav-link">Career</a>
+                </li>
+                <li class="nav-item">
+                    <a href="game.html" class="nav-link">Game</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Why I Chose Duluth</h1>
+            <p class="page-subtitle">A personal journey to the North Shore</p>
+        </div>
+    </section>
+
+    <!-- Duluth Story Section -->
+    <section class="duluth-story-section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2 class="section-title">My Connection to Duluth</h2>
+                    <p class="story-paragraph">
+                        I chose Duluth because ever since I was a kid my family has gone camping on the north shore, sometimes at gooseberry, temperance, grand marais, and once on the gunflint trail. This whole area brings me back to when I was a kid and it's also just a beautiful area.
+                    </p>
+                    <p class="story-paragraph">
+                        Some of my favorite things about the area are all of the swimming spots. I will never turn down a good cliff jumping trip. I also really like night life.
+                    </p>
+                </div>
+                <div class="story-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-campground"></i>
+                        </div>
+                        <h3>Family Camping</h3>
+                        <p>I have many childhood memories at Gooseberry, Temperance, and Grand Marais</p>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-swimming-pool"></i>
+                        </div>
+                        <h3>Swimming Spots</h3>
+                        <p>Exploring the beautiful swimming areas along the North Shore</p>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3>Cliff Jumping</h3>
+                        <p>I will never turn down a good cliff jumping adventure</p>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3>Night Life</h3>
+                        <p>I enjoy the vibrant nightlife scene in Duluth, there are lots of bars and restaurants to choose from.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title">Featured Video</h2>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video id="featuredVideo" poster="../images/video-poster.jpg">
+                        <source src="../videos/umd-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-controls">
+                    <button class="btn-video btn-play" id="playBtn">
+                        <i class="fas fa-play"></i>
+                        Play Video
+                    </button>
+                    <button class="btn-video btn-pause" id="pauseBtn" style="display: none;">
+                        <i class="fas fa-pause"></i>
+                        Pause Video
+                    </button>
+                </div>
+                <p style="color: #64748b; margin-top: 1rem;">
+                    My campus highlights are going out with all my friends, the weather, exploring downtown Duluth, and halloweekend.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <p>Building amazing digital experiences one project at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="career.html">Career</a></li>
+                        <li><a href="hobbies.html">Hobbies</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                        <li><a href="game.html">Game</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Video controls
+        const video = document.getElementById('featuredVideo');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        
+        playBtn.addEventListener('click', () => {
+            video.play();
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'flex';
+        });
+        
+        pauseBtn.addEventListener('click', () => {
+            video.pause();
+            playBtn.style.display = 'flex';
+            pauseBtn.style.display = 'none';
+        });
+        
+        video.addEventListener('ended', () => {
+            playBtn.style.display = 'flex';
+            pauseBtn.style.display = 'none';
+        });
+        
+        // Add loading animation for video
+        video.addEventListener('loadstart', () => {
+            console.log('Video loading started');
+        });
+        
+        video.addEventListener('canplay', () => {
+            console.log('Video can start playing');
+        });
+    </script>
+</body>
+</html>

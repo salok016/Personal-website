@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .game-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .game-info {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .game-info h2 {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .game-info p {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .game-board {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .score-board {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .score-item {
+            text-align: center;
+        }
+        
+        .score-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 0.25rem;
+        }
+        
+        .score-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .game-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .btn-game {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        
+        .btn-secondary:hover {
+            background: #d1d5db;
+        }
+        
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .game-cell {
+            aspect-ratio: 1;
+            background: #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-cell:hover {
+            background: #d1d5db;
+        }
+        
+        .game-cell.revealed {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .game-cell.matched {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            animation: matchAnimation 0.6s ease;
+        }
+        
+        .game-cell.mismatch {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            animation: mismatchAnimation 0.6s ease;
+        }
+        
+        @keyframes matchAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes mismatchAnimation {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+            100% { transform: translateX(0); }
+        }
+        
+        .game-status {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .status-message {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .status-success {
+            color: #10b981;
+        }
+        
+        .status-info {
+            color: #6366f1;
+        }
+        
+        .game-instructions {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .game-instructions h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .game-instructions ul {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .game-instructions li {
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .game-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .score-board {
+                justify-content: center;
+            }
+            
+            .game-grid {
+                gap: 0.5rem;
+            }
+            
+            .game-cell {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="hobbies.html" class="nav-link">Hobbies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="discover.html" class="nav-link">Discover</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resume.html" class="nav-link">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a href="career.html" class="nav-link">Career</a>
+                </li>
+                <li class="nav-item">
+                    <a href="game.html" class="nav-link active">Game</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Arcade Runner</h1>
+            <p class="page-subtitle">Jump, dodge, and survive! Press Space or tap to jump.</p>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section class="game-section">
+        <div class="game-container">
+            <div class="game-board" style="padding: 1rem;">
+                <div class="game-header">
+                    <div class="score-board">
+                        <div class="score-item">
+                            <div class="score-label">Score</div>
+                            <div class="score-value" id="score">Score: 0</div>
+                        </div>
+                    </div>
+                    <div class="game-controls">
+                        <button class="btn-game btn-primary" onclick="startGame()">Start Game</button>
+                        <button class="btn-game btn-secondary" onclick="restartGame()">Restart</button>
+                    </div>
+                </div>
+
+                <div id="startScreen" class="status-message status-info" style="text-align:center; margin-bottom: 1rem;">
+                    Press Start or hit Space to begin
+                </div>
+                <div id="instructions" class="status-message status-info" style="display:none; text-align:center; margin-bottom: 1rem;">
+                    Tap or press Space to jump. Avoid obstacles and birds!
+                </div>
+                <div id="gameOver" class="status-message" style="display:none; text-align:center; margin-bottom: 1rem;">
+                    Game Over! Final Score: <span id="finalScore">0</span>
+                </div>
+
+                <div style="display:flex; justify-content:center;">
+                    <canvas id="gameCanvas" width="800" height="450" style="background:#0b1420; border-radius:12px; width:100%; max-width:800px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <p>Building amazing digital experiences one project at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="career.html">Career</a></li>
+                        <li><a href="hobbies.html">Hobbies</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                        <li><a href="game.html">Game</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/custom-game.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

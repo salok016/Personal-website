@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #374151 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .resume-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .resume-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .resume-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .resume-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resume-title {
+            font-size: 1.3rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+        
+        .resume-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+        }
+        
+        .resume-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .resume-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .resume-block {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .resume-block h3 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .experience-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .experience-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+        
+        .experience-company {
+            color: #1e3a8a;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .experience-duration {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .experience-description {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-item {
+            background: linear-gradient(135deg, #1e3a8a, #374151);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .education-degree {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+        
+        .education-school {
+            color: #1e3a8a;
+            margin-bottom: 0.25rem;
+        }
+        
+        .education-year {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .download-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #1e3a8a, #374151);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .resume-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .resume-contact {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .resume-name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="hobbies.html" class="nav-link">Hobbies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="discover.html" class="nav-link">Discover</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resume.html" class="nav-link active">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a href="career.html" class="nav-link">Career</a>
+                </li>
+                <li class="nav-item">
+                    <a href="game.html" class="nav-link">Game</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Professional Resume</h1>
+            <p class="page-subtitle">Detailed overview of my experience, skills, and qualifications</p>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="resume-section">
+        <div class="resume-container">
+            <!-- Resume Header -->
+            <div class="resume-header">
+                <h1 class="resume-name">Connor Saloka</h1>
+                <p class="resume-title">Enthusiastic Worker | Motivated Team Player</p>
+                <div class="resume-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Minneapolis, Minnesota 55406</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>763-228-4035</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>connorsaloka11@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resume Content -->
+            <div class="resume-content">
+                <!-- Left Column -->
+                <div class="resume-column">
+                    <!-- Experience -->
+                    <div class="resume-block">
+                        <h3><i class="fas fa-briefcase"></i> Work History</h3>
+                        
+                        <div class="experience-item">
+                            <div class="experience-title">Retail Worker</div>
+                            <div class="experience-company">Love from Minnesota</div>
+                            <div class="experience-duration">August 2023 - August 2025</div>
+                            <div class="experience-description">
+                                Stocked clothing, labeled items, and arranged clothing according to size. Opened and closed store, used cash register to ring up customers.
+                            </div>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-title">Stock Clerk / Courtesy Clerk</div>
+                            <div class="experience-company">Lunds And Byerly's - Richfield, MN</div>
+                            <div class="experience-duration">July 2022 - October 2022</div>
+                            <div class="experience-description">
+                                Stocked merchandise, clearly labeling items, and arranging according to size or color. Removed debris and packaging from boxes and separated for recycling or disposal. Greeted customers and directed to requested products. Bagged customer items efficiently using proper techniques to protect delicate items and separate different groups of merchandise. Helped customers take merchandise out of the store and loaded items into vehicles. Maintained a clean and tidy checkout area to optimize service delivery.
+                            </div>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="experience-title">Concession Stand Worker</div>
+                            <div class="experience-company">Jerry's Cherry Lemonade - Multiple Locations in Minnesota</div>
+                            <div class="experience-duration">June 2021 - July 2022</div>
+                            <div class="experience-description">
+                                Served drinks and snacks to patrons, maintaining professionalism, and supporting individual needs. Maintained clean, organized workspace according to operational standards. Consistently provided friendly service to promote better customer engagement. Maintained high standards of customer service in high-volume, fast-paced operations.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="resume-block">
+                        <h3><i class="fas fa-tools"></i> Skills</h3>
+                        <div class="skills-list">
+                            <span class="skill-item">Customer Inquiries</span>
+                            <span class="skill-item">Stocking and Replenishing</span>
+                            <span class="skill-item">Work Station Cleaning</span>
+                            <span class="skill-item">Safe Lifting Procedures</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Key Attributes -->
+                    <div class="resume-block">
+                        <h3><i class="fas fa-star"></i> Key Attributes</h3>
+                        <div class="skills-list">
+                            <span class="skill-item">Clear Communication</span>
+                            <span class="skill-item">Willing to Learn</span>
+                            <span class="skill-item">Motivated Team Player</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="resume-column">
+                    <!-- Professional Summary -->
+                    <div class="resume-block">
+                        <h3><i class="fas fa-user"></i> Professional Summary</h3>
+                        <p class="experience-description">
+                            Enthusiastic worker willing to take on any task to help organization's mission succeed. Pleasant, hardworking and reliable with great interpersonal skills.
+                        </p>
+                    </div>
+                    
+                    <!-- Education -->
+                    <div class="resume-block">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        
+                        <div class="education-item">
+                            <div class="education-degree">Currently Enrolled - Second Year</div>
+                            <div class="education-school">University of Minnesota Duluth - Duluth, MN</div>
+                            <div class="education-year">Major: Management Information Systems (MIS) - Present</div>
+                        </div>
+                        
+                        <div class="education-item">
+                            <div class="education-degree">High School Diploma</div>
+                            <div class="education-school">Roosevelt High School - Minneapolis, MN</div>
+                            <div class="education-year">June 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div class="download-section">
+                <h3>View & Download PDF Resume</h3>
+                <p>Get a printable version of my resume for your records</p>
+                <div style="margin-bottom: 2rem; text-align: center;">
+                    <img src="../files/resume.JPEG" alt="Connor Saloka Resume - Page 1" id="resumeImage" style="max-width: 100%; height: auto; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-bottom: 1rem;" onerror="tryOtherFormats()">
+                    <img src="../files/resume.jpeg2" alt="Connor Saloka Resume - Page 2" id="resumeImage2" style="max-width: 100%; height: auto; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); display: none;" onerror="tryOtherFormats2()" onload="this.style.display='block';">
+                    <p id="resumeError" style="display: none; color: #6b7280; padding: 2rem;">Resume image not found. Please ensure resume.jpg or resume.png is in the files folder.</p>
+                </div>
+                <a href="../files/resume.JPEG" class="download-btn" target="_blank" download="Connor_Saloka_Resume.jpg">
+                    <i class="fas fa-download"></i>
+                    Download My Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <p>Building amazing digital experiences one project at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="career.html">Career</a></li>
+                        <li><a href="hobbies.html">Hobbies</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                        <li><a href="game.html">Game</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        function tryOtherFormats() {
+            const img = document.getElementById('resumeImage');
+            const errorMsg = document.getElementById('resumeError');
+            const formats = ['resume.JPEG', 'resume.jpg', 'resume.JPG', 'resume.png', 'resume.PNG', 'resume.jpeg'];
+            let currentIndex = 0;
+            
+            function tryNext() {
+                if (currentIndex < formats.length) {
+                    img.src = '../files/' + formats[currentIndex];
+                    currentIndex++;
+                } else {
+                    img.style.display = 'none';
+                    errorMsg.style.display = 'block';
+                }
+            }
+            
+            img.onerror = tryNext;
+            tryNext();
+        }
+        
+        function tryOtherFormats2() {
+            const img = document.getElementById('resumeImage2');
+            const formats = ['resume.jpeg2', 'resume.JPEG2', 'resume2.JPEG', 'resume2.jpg', 'resume2.JPG', 'resume2.png', 'resume2.PNG', 'resume2.jpeg', 'resume-page2.JPEG', 'resume-page2.jpg'];
+            let currentIndex = 0;
+            
+            function tryNext() {
+                if (currentIndex < formats.length) {
+                    img.src = '../files/' + formats[currentIndex];
+                    currentIndex++;
+                } else {
+                    img.style.display = 'none';
+                }
+            }
+            
+            img.onerror = tryNext;
+            tryNext();
+        }
+        
+        // Try to load second page on page load
+        window.addEventListener('load', function() {
+            tryOtherFormats2();
+        });
+    </script>
+</body>
+</html>

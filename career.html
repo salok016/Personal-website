@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career - Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #374151 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .timeline {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: -3rem;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        
+        .timeline-marker {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e3a8a, #374151);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+        
+        .timeline-content {
+            margin-left: 2rem;
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .timeline-content h3 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content .company {
+            color: #1e3a8a;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content .duration {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .skills-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-category h3 {
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #1e3a8a, #374151);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .ai-interest-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .ai-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .ai-content p {
+            color: #6b7280;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ai-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .ai-highlight-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #1e3a8a;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-highlight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ai-highlight-card h3 {
+            color: #1f2937;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ai-highlight-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-item::before {
+                display: none;
+            }
+            
+            .timeline-content {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .ai-highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .ai-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Portfolio</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="hobbies.html" class="nav-link">Hobbies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="discover.html" class="nav-link">Discover</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resume.html" class="nav-link">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a href="career.html" class="nav-link active">Career</a>
+                </li>
+                <li class="nav-item">
+                    <a href="game.html" class="nav-link">Game</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">My Career Aspirations</h1>
+            <p class="page-subtitle">Exploring opportunities in artificial intelligence and machine learning</p>
+        </div>
+    </section>
+
+    <!-- AI Interest Section -->
+    <section class="ai-interest-section">
+        <div class="container">
+            <div class="ai-content">
+                <h2 class="section-title">Interest in Artificial Intelligence</h2>
+                
+                <p>
+                    As I continue my education at the University of Minnesota Duluth, I am developing a strong interest in pursuing a career in artificial intelligence after graduation. The field of AI represents the cutting edge of technology and offers incredible opportunities to solve complex problems and create innovative solutions that can make a real difference in people's lives.
+                </p>
+                
+                <p>
+                    My fascination with AI stems from its potential to transform industries, improve efficiency, and enhance human capabilities. I'm particularly interested in how machine learning algorithms can analyze vast amounts of data to uncover patterns and insights that would be impossible for humans to detect manually. The applications of AI span from healthcare and education to business operations and creative industries, making it an exciting and versatile field to explore.
+                </p>
+                
+                <p>
+                    Through my IT Business major, I'm gaining a solid foundation in technology and business principles that will be valuable in the AI field. I'm eager to learn more about machine learning, neural networks, natural language processing, and how these technologies can be applied to real-world business challenges. My goal is to combine technical AI skills with business acumen to help organizations leverage artificial intelligence effectively.
+                </p>
+                
+                <p>
+                    After college, I hope to work in roles that allow me to develop, implement, or manage AI solutions. Whether that's as an AI engineer, data scientist, or in a business-focused role that bridges the gap between technical AI capabilities and business needs, I'm excited about the possibilities that lie ahead in this rapidly evolving field.
+                </p>
+                
+                <div class="ai-highlights">
+                    <div class="ai-highlight-card">
+                        <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                        <p>Interested in developing algorithms that can learn from data and make intelligent predictions and decisions.</p>
+                    </div>
+                    
+                    <div class="ai-highlight-card">
+                        <h3><i class="fas fa-chart-line"></i> Business Applications</h3>
+                        <p>Excited about applying AI to solve real business problems and improve operational efficiency.</p>
+                    </div>
+                    
+                    <div class="ai-highlight-card">
+                        <h3><i class="fas fa-lightbulb"></i> Innovation</h3>
+                        <p>Drawn to the creative and innovative aspects of AI development and its potential to transform industries.</p>
+                    </div>
+                    
+                    <div class="ai-highlight-card">
+                        <h3><i class="fas fa-users"></i> Impact</h3>
+                        <p>Motivated by the opportunity to create AI solutions that can positively impact people's lives and society.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <p>Building amazing digital experiences one project at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="career.html">Career</a></li>
+                        <li><a href="hobbies.html">Hobbies</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                        <li><a href="game.html">Game</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
